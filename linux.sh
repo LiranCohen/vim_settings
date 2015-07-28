@@ -25,6 +25,7 @@ VIM=$(vim --version | grep "7.4"| wc -l)
 until [$VIM -lt 1 ]; do
     # upgrade vim
     apt-get install -y vim
+    VIM -=1
 done
 
 echo "alias vi='vim'" >> .bash_profile
