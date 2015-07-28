@@ -1,7 +1,8 @@
 mkdir -p ~/.vim/autoload &&
 mkdir -p ~/.vim/bundle &&
+rm -rf ~/.vim/bundle/* &&
+rm -rf ~/.vim/autoload/* &&
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim &&
-
 cp -rf vim/* ~/.vim/ &&
 cp -f .vimrc ~/.vim/.vimrc &&
 (cd ~/.vim/bundle; git submodule update --init;) &&
