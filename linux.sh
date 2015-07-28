@@ -21,12 +21,11 @@ if ! vim_loc="$(type -p "vim")" || [ -z "$tmux_loc" ]; then
       apt-get install -y vim 
 fi
 
-VIM=$(vim --version | grep "7.4"| wc -l)
-until [$VIM -gt 0 ]; do
-    # upgrade vim
+VIM=$(vim --version | grep "7.4" | wc -l)
+if [ $VIM -lt 1]; then
+    #upgrae vim
     apt-get install -y vim
-    let VIM +=1
-done
+fi
 
 echo "alias vi='vim'" >> .bash_profile
 
