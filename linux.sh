@@ -8,8 +8,13 @@ rm -rf ~/.vim/autoload/*
 apt-get update
 
 if ! cmake_loc="$(type -p "cmake")" || [ -z "$cmake_loc" ]; then
-    # install cmake
-    apt-get install -y cmake
+    # install cmake and build tools
+    apt-get install -y build-essential cmake
+fi
+
+if ! py_loc="$(type -p "python")" || [ -z "$py_loc" ]; then
+    #install python-dev
+    apt-get install -y python-dev
 fi
 
 if ! curl_loc="$(type -p "curl")" || [ -z "$curl_loc"]; then
