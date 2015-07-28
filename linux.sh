@@ -33,7 +33,7 @@ if ! vim_loc="$(type -p "vim")" || [ -z "$vim_loc" ]; then
 fi
 
 VIM=$(vim --version | grep "7.4" | wc -l)
-if [ $VIM -lt 1]; then
+if [ $VIM -lt 1 ]; then
     #upgrae vim
     apt-get install -y vim
 fi
@@ -48,7 +48,7 @@ cd ..
 cp -rf bundle/* ~/.vim/bundle/
 cp -f .vimrc ~/
 
-(cd ~/.vim/bundle/YouCompleteMe; sh install.sh --gocode-completer;)
+(cd ~/.vim/bundle/YouCompleteMe;YCM_CORES=1 ./install.sh --gocode-completer;)
 
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
