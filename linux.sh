@@ -4,30 +4,28 @@ mkdir -p ~/.vim/bundle
 rm -rf ~/.vim/bundle/*
 rm -rf ~/.vim/autoload/*
 
+apt-get update
 
-TMUX=$(tmux --help| grep "command not found" | wc -l)
-until [ $TMUX -lt 1 ]; do
-    sudo apt-get install -y tmux 
-    let CMAKE-=1
-done
+if ! cmake_loc="$(tpye -p "cmake")" || [ -z "$cmake_loc" ]; then
+    # install cmake
+    apt-get install -y cmake
+fi
 
-CMAKE=$(cmake --help| grep "command not found" | wc -l)
-until [ $CMAKE -lt 1 ]; do
-    sudo apt-get install -y cmake
-    let CMAKE-=1
-done
+if ! tmux_loc="$(type -p "tmux")" || [ -z "$tmux_loc" ]; then
+      # install tmux
+      apt-get install -y tmux
+fi
 
-VIM=$(vim --version | grep "command not found" | wc -l)
-until [ $CMAKE -lt 1 ]; do
-    sudo apt-get install -y vim
-    let CMAKE-=1
-done
+if ! vim_loc="$(type -p "vim")" || [ -z "$tmux_loc" ]; then
+      # install tmux
+      apt-get install -y vim 
+fi
 
-VIM=$(vim --version | grep "7.4" | wc -l)
-until [ $CMAKE -lt 1 ]; do
-    sudo apt-get install -y vim 
-    let CMAKE-=1
-done
+VIM=$(vim --version | grep "7.4"| wc -l)
+until [$VIM -lt 1 ]; do
+    # upgrade vim
+    apt-get install -y vim
+fi
 
 echo "alias vi='vim'" >> .bash_profile
 
