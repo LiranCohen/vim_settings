@@ -7,17 +7,22 @@ rm -rf ~/.vim/autoload/*
 
 apt-get update
 
-if ! cmake_loc="$(tpye -p "cmake")" || [ -z "$cmake_loc" ]; then
+if ! cmake_loc="$(type -p "cmake")" || [ -z "$cmake_loc" ]; then
     # install cmake
     apt-get install -y cmake
 fi
 
-if ! tmux_loc="$(type -p "tmux")" || [ -z "$tmux_loc" ]; then
+if ! curl_loc="$(type -p "curl")" || [ -z "$curl_loc"]; then
+    #install curl
+    apt-get install -y curl
+fi
+
+if ! tmux_loc="$(type "tmux")" || [ -z "$tmux_loc" ]; then
       # install tmux
       apt-get install -y tmux
 fi
 
-if ! vim_loc="$(type -p "vim")" || [ -z "$tmux_loc" ]; then
+if ! vim_loc="$(type -p "vim")" || [ -z "$vim_loc" ]; then
       # install tmux
       apt-get install -y vim 
 fi
