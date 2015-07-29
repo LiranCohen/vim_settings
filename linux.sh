@@ -42,7 +42,7 @@ echo "alias vi='vim'" >> .bash_profile
 
 if ! go_loc="$(type -p "go")" || [ -z "$go_loc" ]; then
       # install tmux
-      apt-get install -y go 
+      apt-get install -y golang
 fi
 
 cd bundle
