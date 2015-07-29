@@ -40,6 +40,11 @@ fi
 
 echo "alias vi='vim'" >> .bash_profile
 
+if ! go_loc="$(type -p "go")" || [ -z "$go_loc" ]; then
+      # install tmux
+      apt-get install -y go 
+fi
+
 cd bundle
 git submodule update --init --recursive
 git submodule foreach git pull origin master 
