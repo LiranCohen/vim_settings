@@ -1,6 +1,7 @@
 #!/bin/sh
 mkdir -p ~/.vim/autoload
 mkdir -p ~/.vim/bundle
+mkdir -p ~/.vim/colors
 
 rm -rf ~/.vim/bundle/*
 rm -rf ~/.vim/autoload/*
@@ -51,6 +52,7 @@ git submodule foreach git pull origin master
 cd ..
 
 cp -rf bundle/* ~/.vim/bundle/
+cp -rf colors/* ~/.vim/colors/
 cp -f .vimrc ~/
 
 (cd ~/.vim/bundle/YouCompleteMe;YCM_CORES=1 ./install.sh --gocode-completer;)
