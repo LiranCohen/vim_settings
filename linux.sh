@@ -59,3 +59,5 @@ cp -f .vimrc ~/
 
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
+export TERM=screen-256color
+
